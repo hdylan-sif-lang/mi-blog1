@@ -1,0 +1,95 @@
+/* --- ESTILOS GENERALES --- */
+body {
+font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+background-color: #060814;
+color: #ffffff;
+padding: 20px;
+}
+.cabecera {
+text-align: center;
+margin-bottom: 40px;
+}
+/* ==========================================
+CONTENIDO 3.9: ESTRUCTURA CON CSS GRID
+========================================== */
+.grid-proyectos {
+display: grid;
+/* Creamos 4 columnas exactamente iguales utilizando fracciones (fr) */
+grid-template-columns: 1fr 1fr 1fr 1fr;
+/* Espaciado de separación limpia entre las tarjetas */
+gap: 25px;
+}
+/* Estilos base de las tarjetas hijas */
+.tarjeta {
+background-color: #475569;
+padding: 30px;
+border-radius: 12px;
+text-align: center;
+
+border: 1px solid #475569;
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+/* ==========================================
+CONTENIDO 3.10: ANIMACIÓN (TRANSICIÓN)
+========================================== */
+/* Le indicamos a la tarjeta que cualquier cambio visual dure 0.3 segundos de forma
+suave */
+transition:
+transform 0.3s ease,
+box-shadow 0.3s ease,
+background-color 0.3s ease;
+}
+.tarjeta .icono {
+width: 100px;
+height: 100px;
+margin: 0 auto 15px auto;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.tarjeta .icono .logo {
+width: 100%;
+height: 100%;
+object-fit: contain;
+/* transición del logo */
+transition: transform 0.3s ease, filter 0.3s ease;
+/* color blanco base para logos SVG */
+filter: brightness(0) invert(1);
+}
+.tarjeta:hover .icono .logo {
+/* hover del logo */
+transform: translateY(5px);
+filter: brightness(1) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+.tarjeta h3 {
+color: hsl(0, 0%, 94%); /* Azul institucional */
+margin-bottom: 10px;
+}
+/* Efecto interactivo al pasar el cursor por encima de la tarjeta */
+.tarjeta:hover {
+transform: translateY(-10px); /* Eleva la tarjeta sutilmente hacia arriba */
+box-shadow: 0 20px 25px -5px rgba(255, 251, 251, 0.1); /* Intensifica la sombra */
+background-color: #212730; /* Cambia ligeramente el tono de fondo */
+cursor: pointer;
+}
+/* ==========================================
+CONTENIDO 3.11: RESPONSIVE DESIGN (MEDIA QUERIES)
+========================================== */
+/* CONFIGURACIÓN PARA TABLETS (Pantallas menores a 992px de ancho) */
+@media (max-width: 992px) {
+.grid-proyectos {
+/* Reducimos de 4 columnas a solo 2 columnas */
+grid-template-columns: 1fr 1fr;
+}
+}
+/* CONFIGURACIÓN PARA CELULARES (Pantallas menores a 600px de ancho) */
+@media (max-width: 600px) {
+.grid-proyectos {
+
+/* Reducimos la rejilla a 1 sola columna vertical */
+grid-template-columns: 1fr;
+gap: 15px; /* Achicamos la separación para aprovechar pantalla */
+}
+body {
+padding: 10px; /* Reducimos el margen del cuerpo en móviles */
+}
+}
